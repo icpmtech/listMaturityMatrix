@@ -22,6 +22,11 @@
         </span>
       </td>
     </template>
+    <template v-slot:myCellEditorTemplate="{ props }">
+      <td>
+        <KButton :theme-color="'primary'" @click="save"> Edit </KButton>
+      </td>
+    </template>
     <template v-slot:zeroColumnCellTemplate="{ props }">
       <td
         :class="props.class"
@@ -61,6 +66,7 @@
 
 <script>
 import controls from './data';
+import { Button } from '@progress/kendo-vue-buttons';
 import {
   TreeList,
   filterBy,
@@ -72,6 +78,7 @@ import {
 export default {
   components: {
     TreeList,
+    KButton: Button,
   },
   data() {
     return {
@@ -101,6 +108,14 @@ export default {
           editor: 'text',
           expandable: true,
           cell: 'myCellTemplate',
+        },
+        {
+          field: 'audit',
+          title: 'Actions',
+          width: '80px',
+          editor: 'text',
+          expandable: true,
+          cell: 'myCellEditorTemplate',
         },
       ],
     };
