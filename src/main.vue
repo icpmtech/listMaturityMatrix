@@ -17,11 +17,7 @@
   >
     <template v-slot:myCellTemplate="{ props }">
       <td>
-        <span
-          :style="{
-            color: props.value ? 'green' : 'red',
-          }"
-        >
+        <span>
           {{ props.value }}
         </span>
       </td>
@@ -64,7 +60,7 @@
 </template>
 
 <script>
-import employees from './data';
+import controls from './data';
 import {
   TreeList,
   filterBy,
@@ -79,34 +75,31 @@ export default {
   },
   data() {
     return {
-      employees,
-      subItemsField: 'employees',
+      controls,
+      subItemsField: 'subcontrols',
       expandField: 'expanded',
-      expanded: [1, 2, 32],
+      expanded: [1, 2],
       filter: [],
       sort: [
         {
-          field: 'name',
+          field: 'title',
           dir: 'asc',
         },
       ],
       columns: [
         {
-          field: 'name',
-          title: 'Name',
+          field: 'id',
+          title: 'ID',
+          width: '30px',
+          editor: 'text',
           expandable: true,
-          width: '40%',
-          cell: 'zeroColumnCellTemplate',
         },
         {
-          field: 'position',
-          title: 'Position',
-          width: '40%',
-        },
-        {
-          field: 'fullTime',
-          title: 'Full Time',
-          width: '20%',
+          field: 'title',
+          title: 'Title',
+          width: '280px',
+          editor: 'text',
+          expandable: true,
           cell: 'myCellTemplate',
         },
       ],
@@ -114,7 +107,7 @@ export default {
   },
   computed: {
     processedData() {
-      let data = this.employees;
+      let data = this.controls;
       let filteredData = filterBy(data, this.filter, this.subItemsField);
       let sortedData = orderBy(filteredData, this.sort, this.subItemsField);
       return this.addExpandField(sortedData);
