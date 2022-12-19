@@ -7,7 +7,7 @@ const controls = [
     maturityExpected: 5,
     subcontrols: [
       {
-        id: 2,
+        id: '0001',
         title: 'Auditoria - 0001',
         maturityAtual: 2,
         maturityExpected: 5,
@@ -21,7 +21,7 @@ const controls = [
     maturityExpected: 5,
     subcontrols: [
       {
-        id: 4,
+        id: '0002',
         title: 'Auditoria - 0002',
         maturityAtual: 2,
         maturityExpected: 5,

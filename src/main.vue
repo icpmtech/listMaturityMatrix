@@ -9,7 +9,7 @@
     :data-items="processedData"
     :columns="columns"
     :filter="filter"
-    :filterable="true"
+    :filterable="false"
     :sort="sort"
     :sortable="true"
     @datastatechange="handleDataStateChange"
@@ -116,6 +116,7 @@ export default {
           editor: 'text',
           expandable: true,
           cell: 'myCellEditorTemplate',
+          filterCell: null,
         },
       ],
     };
